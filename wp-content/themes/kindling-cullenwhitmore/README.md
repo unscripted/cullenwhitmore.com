@@ -81,3 +81,12 @@ In terminal, change to the kindling theme directory and install the theme's depe
 ## Helpful Links
 
 * [Full Site Editing](https://fullsiteediting.com/)
+
+
+## Credits
+
+### Public Sans Font
+Copyright 2015 The Public Sans Project Authors (https://github.com/uswds/public-sans) 
+This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: https://scripts.sil.org/OFL. The license for USWDS’s Modified Version,... 
+License URL: SIL Open Font License, Version 1.1: https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL_web; USWDS Modified Version: https://github.com/uswds/public-sans/blob/master/LICENSE.md 
+*-- End of Public Sans Font credits --*

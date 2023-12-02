@@ -160,184 +160,91 @@
         {
           "fontFace": [
             {
-              "fontFamily": "Proxima Nova",
-              "fontStretch": "normal",
-              "fontStyle": "normal",
-              "fontWeight": "100",
-              "src": [
-                "file:./assets/fonts/proxima-nova/proxima-nova-thin.otf"
-              ]
-            },
-            {
-              "fontFamily": "Proxima Nova",
-              "fontStretch": "normal",
-              "fontStyle": "italic",
-              "fontWeight": "100",
-              "src": [
-                "file:./assets/fonts/proxima-nova/proxima-nova-thin-it.otf"
-              ]
-            },
-            {
-              "fontFamily": "Proxima Nova",
-              "fontStretch": "normal",
+              "fontFamily": "Public Sans",
               "fontStyle": "normal",
               "fontWeight": "400",
               "src": [
-                "file:./assets/fonts/proxima-nova/proxima-nova-reg.otf"
+                "file:./assets/fonts/public-sans_normal_400.ttf"
               ]
             },
             {
-              "fontFamily": "Proxima Nova",
-              "fontStretch": "normal",
-              "fontStyle": "italic",
-              "fontWeight": "400",
-              "src": [
-                "file:./assets/fonts/proxima-nova/proxima-nova-reg-it.otf"
-              ]
-            },
-            {
-              "fontFamily": "Proxima Nova",
-              "fontStretch": "normal",
+              "fontFamily": "Public Sans",
               "fontStyle": "normal",
               "fontWeight": "600",
               "src": [
-                "file:./assets/fonts/proxima-nova/proxima-nova-semibold.otf"
+                "file:./assets/fonts/public-sans_normal_600.ttf"
               ]
             },
             {
-              "fontFamily": "Proxima Nova",
-              "fontStretch": "normal",
-              "fontStyle": "italic",
-              "fontWeight": "600",
-              "src": [
-                "file:./assets/fonts/proxima-nova/proxima-nova-semibold-it.otf"
-              ]
-            },
-            {
-              "fontFamily": "Proxima Nova",
-              "fontStretch": "normal",
+              "fontFamily": "Public Sans",
               "fontStyle": "normal",
               "fontWeight": "700",
               "src": [
-                "file:./assets/fonts/proxima-nova/proxima-nova-bold.otf"
-              ]
-            },
-            {
-              "fontFamily": "Proxima Nova",
-              "fontStretch": "normal",
-              "fontStyle": "italic",
-              "fontWeight": "700",
-              "src": [
-                "file:./assets/fonts/proxima-nova/proxima-nova-bold-it.otf"
-              ]
-            },
-            {
-              "fontFamily": "Proxima Nova",
-              "fontStretch": "normal",
-              "fontStyle": "normal",
-              "fontWeight": "900",
-              "src": [
-                "file:./assets/fonts/proxima-nova/proxima-nova-black.otf"
-              ]
-            },
-            {
-              "fontFamily": "Proxima Nova",
-              "fontStretch": "normal",
-              "fontStyle": "italic",
-              "fontWeight": "900",
-              "src": [
-                "file:./assets/fonts/proxima-nova/proxima-nova-black-it.otf"
+                "file:./assets/fonts/public-sans_normal_700.ttf"
               ]
             }
           ],
-          "fontFamily": "\"Proxima Nova\", sans-serif",
-          "name": "Proxima Nova",
-          "slug": "proxima-nova"
-        },
-        {
-          "fontFace": [
-            {
-              "fontFamily": "Din Pro",
-              "fontStretch": "normal",
-              "fontStyle": "normal",
-              "fontWeight": "400",
-              "src": [
-                "file:./assets/fonts/dinpro/dinpro-regular.otf"
-              ]
-            },
-            {
-              "fontFamily": "Din Pro",
-              "fontStretch": "normal",
-              "fontStyle": "italic",
-              "fontWeight": "400",
-              "src": [
-                "file:./assets/fonts/dinpro/dinpro-regular.otf"
-              ]
-            }
-          ],
-          "fontFamily": "\"Din Pro\", sans-serif",
-          "name": "DIN Pro",
-          "slug": "din-pro"
-        },
-        {
-          "fontFamily": "-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,Oxygen-Sans,Ubuntu,Cantarell,\"Helvetica Neue\",sans-serif",
-          "name": "System Font",
-          "slug": "system-font"
+          "fontFamily": "Public Sans",
+          "slug": "public-sans"
         }
       ],
       "fontSizes": [
         {
           "fluid": false,
+          "name": "XS",
+          "size": "0.875rem",
+          "slug": "x-small"
+        },
+        {
+          "fluid": false,
+          "name": "S",
           "size": "1rem",
           "slug": "small"
         },
         {
-          "fluid": false,
+          "fluid": {
+            "max": "1.125rem",
+            "min": "1rem"
+          },
+          "name": "M",
           "size": "1.125rem",
           "slug": "medium"
         },
         {
           "fluid": {
-            "max": "1.5rem",
-            "min": "1.375rem"
+            "max": "1.25rem",
+            "min": "1.125rem"
           },
-          "name": "Medium Large",
-          "size": "1.5rem",
-          "slug": "medium-large"
-        },
-        {
-          "fluid": {
-            "max": "2.125rem",
-            "min": "1.5rem"
-          },
-          "size": "2.125rem",
+          "name": "L",
+          "size": "1.25rem",
           "slug": "large"
         },
         {
           "fluid": {
-            "max": "3rem",
-            "min": "2.125rem"
+            "max": "1.5rem",
+            "min": "1.25rem"
           },
-          "size": "3rem",
+          "name": "XL",
+          "size": "1.5rem",
           "slug": "x-large"
         },
         {
           "fluid": {
-            "max": "3.75rem",
-            "min": "2.5rem"
+            "max": "2.25rem",
+            "min": "1.5rem"
           },
-          "name": "2X Large",
-          "size": "3.75rem",
+          "name": "XXL",
+          "size": "2.25rem",
           "slug": "xx-large"
         },
         {
           "fluid": {
             "max": "5rem",
-            "min": "3rem"
+            "min": "2.25rem"
           },
-          "name": "Large Heading",
+          "name": "XXXL",
           "size": "5rem",
-          "slug": "heading"
+          "slug": "xxx-large"
         }
       ],
       "fontWeight": false
@@ -461,7 +368,7 @@
           }
         },
         "typography": {
-          "fontSize": "0.88rem",
+          "fontSize": "var(--wp--preset--font-size--k-large)",
           "textTransform": "uppercase"
         }
       },
@@ -755,8 +662,10 @@
       }
     },
     "typography": {
-      "fontFamily": "var(--wp--preset--font-family--proxima-nova)",
+      "fontFamily": "var(--wp--preset--font-family--public-sans)",
       "fontSize": "var(--wp--preset--font-size--medium)",
+      "fontStyle": "normal",
+      "fontWeight": "400",
       "lineHeight": "1.5"
     }
   },
@@ -771,6 +680,5 @@
       "name": "footer",
       "title": "Footer"
     }
-  ],
-  "version": 2
+  ]
 }
