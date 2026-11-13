@@ -1,0 +1,33 @@
+---
+import { getEmDashCollection } from "emdash";
+import Base from "../../layouts/Base.astro";
+import ProjectCard from "../../components/ProjectCard.astro";
+
+const { entries: projects, cacheHint } = await getEmDashCollection("projects", {
+	orderBy: { sort_order: "asc" },
+});
+if (Astro.cache?.enabled) Astro.cache.set(cacheHint);
+---
+
+<Base title="Projects" description="A few things I'm working on to keep my skills sharp.">
+	<header class="band intro">
+		<div class="frame">
+			<p class="eyebrow">Projects</p>
+			<h1 class="intro__title">Things I'm working on</h1>
+			<p class="lede">A few things I'm working on to keep my skills sharper than safety scissors.</p>
+		</div>
+	</header>
+	<section class="band section">
+		<div class="frame">
+			{
+				projects.length === 0 ? (
+					<p>No projects yet.</p>
+				) : (
+					<div class="project-grid">
+						{projects.map((project) => <ProjectCard project={project} />)}
+					</div>
+				)
+			}
+		</div>
+	</section>
+</Base>

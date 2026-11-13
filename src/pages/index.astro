@@ -1,0 +1,120 @@
+---
+import {
+	getEmDashCollection,
+	getEmDashEntry,
+	getSiteSettings,
+} from "emdash";
+import { PortableText } from "emdash/ui";
+import Base from "../layouts/Base.astro";
+import PostCard from "../components/PostCard.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import { resolveBlogSiteIdentity } from "../utils/site-identity";
+import "../styles/prose.css";
+
+// Home intro is the "home" entry in Pages, so it is editable in the admin.
+const [homeResult, postsResult, projectsResult, settings] = await Promise.all([
+	getEmDashEntry("pages", "home"),
+	getEmDashCollection("posts", { orderBy: { published_at: "desc" }, limit: 4 }),
+	getEmDashCollection("projects", { orderBy: { sort_order: "asc" }, limit: 6 }),
+	getSiteSettings(),
+]);
+const home = homeResult.entry;
+const posts = postsResult.entries;
+const projects = projectsResult.entries;
+const { siteTitle, siteTagline } = resolveBlogSiteIdentity(settings);
+
+if (Astro.cache?.enabled) {
+	if (homeResult.cacheHint) Astro.cache.set(homeResult.cacheHint);
+	Astro.cache.set(postsResult.cacheHint);
+	Astro.cache.set(projectsResult.cacheHint);
+}
+
+const [latest, ...recent] = posts;
+---
+
+<Base title={siteTitle} description={siteTagline}>
+	<header class="band intro home-hero">
+		<div class="frame">
+			<p class="eyebrow">{siteTagline}</p>
+			{
+				home ? (
+					<>
+						<h1 class="intro__title home-hero__title" {...home.edit.title}>
+							{home.data.title}
+						</h1>
+						<div class="prose home-hero__body" {...home.edit.content}>
+							<PortableText value={home.data.content} />
+						</div>
+					</>
+				) : (
+					<h1 class="intro__title home-hero__title">{siteTitle}</h1>
+				)
+			}
+		</div>
+	</header>
+
+	{
+		latest && (
+			<section class="band section" aria-labelledby="latest-post">
+				<div class="frame">
+					<div class="section-head">
+						<h2 id="latest-post" class="section-head__title">
+							Latest writing
+						</h2>
+						<a href="/posts" class="arrow-link">
+							All posts
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
+						</a>
+					</div>
+					<PostCard post={latest} variant="feature" headingLevel={3} priority />
+					{recent.length > 0 && (
+						<div class="post-grid home-recent">
+							{recent.map((post) => (
+								<PostCard post={post} variant="card" headingLevel={3} />
+							))}
+						</div>
+					)}
+				</div>
+			</section>
+		)
+	}
+
+	{
+		projects.length > 0 && (
+			<section class="band section" aria-labelledby="projects">
+				<div class="frame">
+					<div class="section-head">
+						<h2 id="projects" class="section-head__title">
+							Things I'm working on
+						</h2>
+						<a href="/projects" class="arrow-link">
+							All projects
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
+						</a>
+					</div>
+					<div class="project-grid">
+						{projects.map((project) => <ProjectCard project={project} />)}
+					</div>
+				</div>
+			</section>
+		)
+	}
+</Base>
+
+<style>
+	.home-hero {
+		padding-block: clamp(3.5rem, 2rem + 6vw, 7rem);
+	}
+	.home-hero__title {
+		max-width: 18ch;
+	}
+	.home-hero__body {
+		max-width: 60ch;
+		margin-top: var(--spacing-6);
+		font-size: var(--font-size-lg);
+		color: var(--color-text-secondary);
+	}
+	.home-recent {
+		margin-top: var(--spacing-10, 2.5rem);
+	}
+</style>

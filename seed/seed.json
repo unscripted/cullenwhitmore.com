@@ -1,0 +1,441 @@
+{
+	"$schema": "https://emdashcms.com/seed.schema.json",
+	"version": "1",
+	"meta": {
+		"name": "cullenwhitmore.com",
+		"description": "Personal site of Cullen Whitmore",
+		"author": "Cullen Whitmore"
+	},
+	"settings": {
+		"title": "Cullen Whitmore",
+		"tagline": "COO / Director of Engineering @matchbox"
+	},
+	"collections": [
+		{
+			"slug": "posts",
+			"label": "Posts",
+			"labelSingular": "Post",
+			"urlPattern": "/posts/{slug}",
+			"supports": [
+				"drafts",
+				"revisions",
+				"preview",
+				"scheduling",
+				"search",
+				"seo"
+			],
+			"commentsEnabled": true,
+			"fields": [
+				{
+					"slug": "title",
+					"label": "Title",
+					"type": "string",
+					"required": true,
+					"searchable": true
+				},
+				{
+					"slug": "featured_image",
+					"label": "Featured Image",
+					"type": "image"
+				},
+				{
+					"slug": "content",
+					"label": "Content",
+					"type": "portableText",
+					"searchable": true
+				},
+				{
+					"slug": "excerpt",
+					"label": "Excerpt",
+					"type": "text"
+				}
+			]
+		},
+		{
+			"slug": "pages",
+			"label": "Pages",
+			"labelSingular": "Page",
+			"urlPattern": "/{slug}",
+			"supports": [
+				"drafts",
+				"revisions",
+				"preview",
+				"search",
+				"seo"
+			],
+			"fields": [
+				{
+					"slug": "title",
+					"label": "Title",
+					"type": "string",
+					"required": true,
+					"searchable": true
+				},
+				{
+					"slug": "content",
+					"label": "Content",
+					"type": "portableText",
+					"searchable": true
+				}
+			]
+		},
+		{
+			"slug": "projects",
+			"label": "Projects",
+			"labelSingular": "Project",
+			"urlPattern": "/projects/{slug}",
+			"supports": [
+				"drafts",
+				"revisions",
+				"preview",
+				"search",
+				"seo"
+			],
+			"fields": [
+				{
+					"slug": "title",
+					"label": "Title",
+					"type": "string",
+					"required": true,
+					"searchable": true
+				},
+				{
+					"slug": "summary",
+					"label": "Summary",
+					"type": "text",
+					"searchable": true
+				},
+				{
+					"slug": "project_status",
+					"label": "Status",
+					"type": "select",
+					"validation": {
+						"options": [
+							"Active",
+							"Coming soon",
+							"Archived"
+						]
+					}
+				},
+				{
+					"slug": "link",
+					"label": "External link",
+					"type": "url"
+				},
+				{
+					"slug": "sort_order",
+					"label": "Sort order",
+					"type": "integer"
+				},
+				{
+					"slug": "featured_image",
+					"label": "Featured Image",
+					"type": "image"
+				},
+				{
+					"slug": "content",
+					"label": "Content",
+					"type": "portableText",
+					"searchable": true
+				}
+			]
+		}
+	],
+	"taxonomies": [
+		{
+			"name": "category",
+			"label": "Categories",
+			"labelSingular": "Category",
+			"hierarchical": true,
+			"collections": [
+				"posts"
+			],
+			"terms": [
+				{
+					"slug": "engineering",
+					"label": "Engineering"
+				},
+				{
+					"slug": "wordpress",
+					"label": "WordPress"
+				},
+				{
+					"slug": "leadership",
+					"label": "Leadership"
+				}
+			]
+		},
+		{
+			"name": "tag",
+			"label": "Tags",
+			"labelSingular": "Tag",
+			"hierarchical": false,
+			"collections": [
+				"posts"
+			],
+			"terms": [
+				{
+					"slug": "version-control",
+					"label": "Version control"
+				},
+				{
+					"slug": "block-themes",
+					"label": "Block themes"
+				},
+				{
+					"slug": "ai",
+					"label": "AI"
+				}
+			]
+		}
+	],
+	"bylines": [
+		{
+			"id": "byline-cullen",
+			"slug": "cullen-whitmore",
+			"displayName": "Cullen Whitmore"
+		}
+	],
+	"menus": [
+		{
+			"name": "primary",
+			"label": "Primary Navigation",
+			"items": [
+				{
+					"type": "custom",
+					"label": "Writing",
+					"url": "/posts"
+				},
+				{
+					"type": "custom",
+					"label": "Projects",
+					"url": "/projects"
+				},
+				{
+					"type": "custom",
+					"label": "About",
+					"url": "/about"
+				}
+			]
+		}
+	],
+	"widgetAreas": [
+		{
+			"name": "sidebar",
+			"label": "Sidebar",
+			"description": "Widget area displayed on single post pages",
+			"widgets": [
+				{
+					"type": "component",
+					"componentId": "core:search",
+					"title": "Search"
+				},
+				{
+					"type": "component",
+					"componentId": "core:categories",
+					"title": "Categories"
+				},
+				{
+					"type": "component",
+					"componentId": "core:tags",
+					"title": "Tags"
+				},
+				{
+					"type": "component",
+					"componentId": "core:recent-posts",
+					"title": "Recent Posts",
+					"props": {
+						"count": 5,
+						"showDate": true
+					}
+				},
+				{
+					"type": "component",
+					"componentId": "core:archives",
+					"title": "Archives",
+					"props": {
+						"type": "monthly",
+						"limit": 6
+					}
+				}
+			]
+		},
+		{
+			"name": "footer",
+			"label": "Footer",
+			"description": "Widget area displayed in the site footer",
+			"widgets": [
+				{
+					"type": "content",
+					"title": "About",
+					"content": [
+						{
+							"_type": "block",
+							"style": "normal",
+							"_key": "k0",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"text": "COO / Director of Engineering at Matchbox. Really, really, remote.",
+									"_key": "k1",
+									"marks": []
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"sections": [],
+	"content": {
+		"pages": [
+			{
+				"id": "home",
+				"slug": "home",
+				"status": "published",
+				"data": {
+					"title": "Hi, I'm Cullen.",
+					"content": [
+						{
+							"_type": "block",
+							"style": "normal",
+							"_key": "k2",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"text": "I run operations and engineering at Matchbox. Here I write about building for the web, running an engineering team, and the tools I'm tinkering with.",
+									"_key": "k3",
+									"marks": []
+								}
+							]
+						}
+					]
+				}
+			},
+			{
+				"id": "about",
+				"slug": "about",
+				"status": "published",
+				"data": {
+					"title": "About",
+					"content": [
+						{
+							"_type": "block",
+							"style": "normal",
+							"_key": "k4",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"text": "Placeholder: replace with your bio. The current About page will come over in the WordPress import.",
+									"_key": "k5",
+									"marks": []
+								}
+							]
+						}
+					]
+				}
+			}
+		],
+		"posts": [
+			{
+				"id": "post-version-control",
+				"slug": "rethinking-version-control-block-themes",
+				"status": "published",
+				"data": {
+					"title": "Rethinking our commitment (pun intended) to version control when building block themes in WordPress",
+					"excerpt": "The most recent post to escape the drafts list.",
+					"content": [
+						{
+							"_type": "block",
+							"style": "normal",
+							"_key": "k6",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"text": "Placeholder: the full post will be imported from WordPress.",
+									"_key": "k7",
+									"marks": []
+								}
+							]
+						}
+					]
+				},
+				"bylines": [
+					{
+						"byline": "byline-cullen"
+					}
+				],
+				"taxonomies": {
+					"category": [
+						"wordpress"
+					],
+					"tag": [
+						"version-control",
+						"block-themes"
+					]
+				}
+			}
+		],
+		"projects": [
+			{
+				"id": "project-wp-theme",
+				"slug": "wordpress-theme",
+				"status": "published",
+				"data": {
+					"title": "A WordPress theme",
+					"summary": "A block theme built to keep my skills sharper than safety scissors.",
+					"project_status": "Active",
+					"sort_order": 1,
+					"content": [
+						{
+							"_type": "block",
+							"style": "normal",
+							"_key": "k8",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"text": "Placeholder: add project details.",
+									"_key": "k9",
+									"marks": []
+								}
+							]
+						}
+					]
+				}
+			},
+			{
+				"id": "project-chatgpt",
+				"slug": "fun-with-chatgpt",
+				"status": "published",
+				"data": {
+					"title": "Fun with ChatGPT",
+					"summary": "Experiments with AI tools.",
+					"project_status": "Coming soon",
+					"sort_order": 2,
+					"content": [
+						{
+							"_type": "block",
+							"style": "normal",
+							"_key": "k10",
+							"markDefs": [],
+							"children": [
+								{
+									"_type": "span",
+									"text": "Placeholder: add project details.",
+									"_key": "k11",
+									"marks": []
+								}
+							]
+						}
+					]
+				}
+			}
+		]
+	}
+}

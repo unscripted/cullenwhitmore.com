@@ -1,0 +1,34 @@
+/*
+  theme.css -- cullenwhitmore.com brand overrides (Matchbox blue + orange).
+  Every token lives in tokens.css; override here.
+*/
+
+:root {
+	--color-brand: light-dark(#003da7, #8fb2ff);
+	--color-brand-hover: light-dark(#002668, #b8cfff);
+	--color-on-brand: light-dark(#ffffff, #0a0a0a);
+	--color-accent: #f5873c;
+	--color-accent-text: light-dark(#a8501a, #f5a26b);
+	--color-text: light-dark(#1f2329, #ededed);
+}
+
+.eyebrow {
+	color: var(--color-brand);
+}
+
+.brand__mark {
+	background: var(--color-brand);
+	color: var(--color-on-brand);
+}
+
+::selection {
+	background: color-mix(in srgb, var(--color-accent) 35%, transparent);
+}
+
+.lede {
+	max-width: 60ch;
+	margin-top: var(--spacing-4);
+	font-size: var(--font-size-lg);
+	line-height: 1.6;
+	color: var(--color-text-secondary);
+}
