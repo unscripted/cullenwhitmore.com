@@ -1,0 +1,65 @@
+---
+import { getEmDashEntry, getSeoMeta, decodeSlug, getSiteSettings } from "emdash";
+import { PortableText, Image } from "emdash/ui";
+import Base from "../../layouts/Base.astro";
+import { resolveBlogSiteIdentity } from "../../utils/site-identity";
+import "../../styles/prose.css";
+
+const slug = decodeSlug(Astro.params.slug);
+if (!slug) return Astro.rewrite("/404");
+
+const { entry: project, cacheHint } = await getEmDashEntry("projects", slug);
+if (!project) return Astro.rewrite("/404");
+if (Astro.cache?.enabled) Astro.cache.set(cacheHint);
+
+const { siteTitle } = resolveBlogSiteIdentity(await getSiteSettings());
+const seo = getSeoMeta(project, {
+	siteTitle,
+	siteUrl: Astro.url.origin,
+	path: Astro.url.pathname.replace(/\/$/, ""),
+});
+---
+
+<Base
+	title={seo.title}
+	pageTitle={seo.ogTitle}
+	description={seo.description ?? project.data.summary}
+	canonical={seo.canonical}
+	robots={seo.robots}
+	content={{ collection: "projects", id: project.data.id, slug }}
+>
+	<article class="band page">
+		<div class="frame page__inner">
+			<a href="/projects" class="arrow-link">← All projects</a>
+			{project.data.project_status && <p class="eyebrow">{project.data.project_status}</p>}
+			<h1 class="intro__title" {...project.edit.title}>{project.data.title}</h1>
+			{project.data.summary && <p class="lede" {...project.edit.summary}>{project.data.summary}</p>}
+			{project.data.link && (
+				<p><a class="btn" href={project.data.link} rel="noopener noreferrer" target="_blank" {...project.edit.link}>Visit project</a></p>
+			)}
+			{project.data.featured_image && (
+				<div class="page__image" {...project.edit.featured_image}>
+					<Image image={project.data.featured_image} sizes="(min-width: 900px) 800px, 100vw" priority />
+				</div>
+			)}
+			<div class="prose" {...project.edit.content}>
+				<PortableText value={project.data.content} />
+			</div>
+		</div>
+	</article>
+</Base>
+
+<style>
+	.page {
+		padding-block: clamp(3rem, 2rem + 4vw, 5.5rem);
+	}
+	.page__inner {
+		display: grid;
+		gap: var(--spacing-6);
+		max-width: calc(var(--content-width) + 4rem);
+	}
+	.page__image :global(img) {
+		width: 100%;
+		border-radius: var(--radius-lg, 12px);
+	}
+</style>
